@@ -6,6 +6,8 @@ class UrlShortner < Sinatra::Base
     #Registering Active Record
     register Sinatra::ActiveRecordExtension
 
+    enable :logging
+    
     set :views, File.expand_path('./app/views')
     set :root, File.expand_path('./app')
 end
