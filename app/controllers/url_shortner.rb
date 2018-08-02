@@ -12,8 +12,8 @@ class UrlShortner < Sinatra::Base
     end
 
     post '/' do
-        code = Call.service(:url_generator).new(url: params[:url]).shorten!
-        "#{request.host}:#{request.port}/#{code}"
+        @code = Call.service(:url_generator).new(url: params[:url]).shorten!
+        erb :link
     end
 
 end

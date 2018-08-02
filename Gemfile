@@ -5,8 +5,7 @@ gem "sinatra-activerecord"
 gem "sqlite3"
 gem 'rake'
 gem 'rack'
-# gem 'thin'
-gem 'passenger'
+gem 'thin'
 
 group :test do
   gem 'rack-test'

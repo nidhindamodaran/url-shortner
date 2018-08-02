@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>
-      Url Shortner
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  </head>
+<head>
+  <title>
+    Url Shortner
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 
-  <body>
-    <h3>URL Shortner</h3>
-    <form method='post'>
+<body>
+<div class="container">
+  <div class="row">
+    <h2>URL Shortner</h2>
+
+    <form method='post' id='form'>
       <div class="form-group">
         <label for="exampleInputEmail1">URL</label>
         <input type="text" name='url' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Url">
       </div>
       <button type="submit" class="btn btn-primary">Shorten</button>
     </form>
-  </body>
+
+    <br>
+    <br>
+
+    <div id="link"></div>
+  </div>
+
+</body>
 </html>
+
+<script type='text/javascript'>
+    $('#form').submit(function (ev) {
+        ev.preventDefault();
+        var $form = $(this),
+                url = $form.attr('action');
+        var posting = $.post(url, {url: $('#exampleInputEmail1').val()});
+        posting.done(function (data) {
+            $('#link').html(data)
+        });
+    });
+</script>
