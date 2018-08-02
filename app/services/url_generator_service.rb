@@ -7,8 +7,6 @@ class UrlGeneratorService
     end
 
     def shorten!
-        parse_url!
-
         shortened_url =   Url.find_or_initialize_by(url: url)
         
         if shortened_url.new_record?
@@ -20,18 +18,6 @@ class UrlGeneratorService
     end
 
     private
-
-    def parse_url!
-        url = url.to_s.strip
-        if url !~ url_with_protocol? && url[0] != '/'
-          url = "/#{url}"
-        end
-        URI.parse(url).normalize.to_s
-    end
-
-    def url_with_protocol?
-        Regexp.new('\Ahttp:\/\/|\Ahttps:\/\/', Regexp::IGNORECASE)
-    end
 
     def generate_code
         loop do

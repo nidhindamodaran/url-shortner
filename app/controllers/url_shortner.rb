@@ -6,23 +6,14 @@ class UrlShortner < Sinatra::Base
         erb :index
     end
 
-    get '/:short_code' do
-        #Redirect to original url
+    get '/:code' do
+        url = Call.service(:url_resolver).new(code: params[:code]).resolve
+        redirect url, 301
     end
 
     post '/' do
         code = Call.service(:url_generator).new(url: params[:url]).shorten!
+        "#{request.host}:#{request.port}/#{code}"
     end
-
-    private
-
-    # def params
-    #     puts "-----------------------#{request.body.read.inspect}"
-    #     body = request.body.read.to_s
-    #     return {} if body.empty?
-    
-    #     payload = JSON.parse(body)
-    #     Hash[payload.map { |(k,v)| [k.to_sym, v] }]
-    # end
 
 end
