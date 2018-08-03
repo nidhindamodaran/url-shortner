@@ -37,3 +37,10 @@ or
 ```sh
 thin start
 ```
+
+## API details
+
+Open Api end-point added for viewing url hits count and original url
+```sh
+<host>/api/:code
+```
