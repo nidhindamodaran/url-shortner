@@ -1,7 +1,7 @@
 <div class="well">
   <% unless @link.errors.present? %>
       Your Shortened Link is :
-      <a href='http://<%= "#{request.host_with_port}/#{@code}" %>'><%= "#{request.host_with_port}/#{@link.code}" %></a>
+      <a href='http://<%= "#{request.host_with_port}/#{@link.code}" %>' target="_blank"><%= "#{request.host_with_port}/#{@link.code}" %></a>
   <% else %>
       <p class="text-danger"><%= @link.errors.full_messages.first %></p>
   <% end %>
