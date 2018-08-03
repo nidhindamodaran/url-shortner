@@ -11,4 +11,10 @@ class UrlResolverService
 
         link.try(:url)
     end
+
+    def fetch_url_details
+        link =   Url.find_by_code(code)
+
+        link
+    end
 end

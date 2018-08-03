@@ -1,10 +1,12 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/contrib'
 
 class UrlShortner < Sinatra::Base
 
     #Registering Active Record
     register Sinatra::ActiveRecordExtension
+    register Sinatra::Contrib
 
     enable :logging
     
